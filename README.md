@@ -1,7 +1,7 @@
 # EasyJNI
 根据java的Class、Method、Field生成相关JNI代码
 
-### 以为File.toURL()函数为例，生成的代码如下：
+### 以File.toURL()函数为例，生成的代码如下：
 ```
 jmethodID toURLID = env->GetMethodId(fileCls,"toURL","()Ljava/net/URL;");
 jobject toURLValue = env->CallObjectMethod(fileObj,toURLID);
