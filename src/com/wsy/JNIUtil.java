@@ -127,8 +127,8 @@ public class JNIUtil {
         stringBuilder.append("jfieldID ").append(field.getName()).append("ID = ");
         boolean isStatic = Modifier.isStatic(field.getModifiers());
 
-        stringBuilder.append(isStatic ? "env->GetStaticFieldId(" : "env->GetFieldId(")
-                .append(lowerFirst(field.getDeclaringClass().getSimpleName())).append("Cls,")
+        stringBuilder.append(isStatic ? "env->GetStaticFieldID(" : "env->GetFieldID(")
+                .append(lowerFirst(field.getDeclaringClass().getSimpleName())).append("Clazz,")
                 .append("\"").append(field.getName()).append("\"").append(",\"")
                 .append(class2Signature(field.getType()))
                 .append("\");")
@@ -143,7 +143,7 @@ public class JNIUtil {
                 .append(field.getType().isPrimitive() ? upperFirst(field.getType().getName()) : "Object")
                 .append("Field(")
                 .append(field.getClass().getSimpleName())
-                .append(isStatic ? "Cls," : "Obj,")
+                .append(isStatic ? "Clazz," : "Obj,")
                 .append(field.getName())
                 .append("ID);");
 
@@ -161,9 +161,9 @@ public class JNIUtil {
         stringBuilder.append("jmethodID ").append(method.getName()).append("ID = ");
         boolean isStatic = Modifier.isStatic(method.getModifiers());
         stringBuilder
-                .append(isStatic ? "env->GetStaticMethodId(" : "env->GetMethodId(")
+                .append(isStatic ? "env->GetStaticMethodID(" : "env->GetMethodID(")
                 .append(lowerFirst(method.getDeclaringClass().getSimpleName()))
-                .append("Cls,")
+                .append("Clazz,")
                 .append("\"")
                 .append(method.getName())
                 .append("\"")
@@ -201,7 +201,7 @@ public class JNIUtil {
                 .append(method.getReturnType().isPrimitive() ? upperFirst(method.getReturnType().getSimpleName()) : "Object")
                 .append("Method(")
                 .append(lowerFirst(method.getDeclaringClass().getSimpleName()))
-                .append(isStatic ? "Cls," : "Obj,")
+                .append(isStatic ? "Clazz," : "Obj,")
                 .append(method.getName()).append("ID");
 
         if (parameters != null && parameters.length != 0) {
@@ -228,9 +228,9 @@ public class JNIUtil {
                     .append("if (error != NULL) {\n")
                     .append("    // WARNING: YOU CAN NOT USE SOME JNI FUNCTIONS AFTER EXCEPTION OCCURRED AND 'env->ExceptionClear()' IS NOT CALLED\n")
                     .append("    // see \n")
-                    .append("    // https://developer.android.google.cn/training/articles/perf-jni#exceptions_1\n")
+                    .append("    // https://developer.androID.google.cn/training/articles/perf-jni#exceptions_1\n")
                     .append("    // or\n")
-                    .append("    // https://developer.android.com/training/articles/perf-jni#exceptions_1\n")
+                    .append("    // https://developer.androID.com/training/articles/perf-jni#exceptions_1\n")
                     .append("    // for more information\n")
                     .append("    // \n")
                     .append("    // print exception:\n")
