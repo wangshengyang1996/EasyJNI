@@ -3,7 +3,7 @@
 
 ### 以File.toURL()函数为例，生成的代码如下：
 ```
-jmethodID toURLID = env->GetMethodId(fileCls,"toURL","()Ljava/net/URL;");
+jmethodID toURLID = env->GetMethodID(fileClazz,"toURL","()Ljava/net/URL;");
 jobject toURLValue = env->CallObjectMethod(fileObj,toURLID);
 // this exception may occur:
 // java.net.MalformedURLException
@@ -11,9 +11,9 @@ jthrowable error = env->ExceptionOccurred();
 if (error != NULL) {
     // WARNING: YOU CAN NOT USE SOME JNI FUNCTIONS AFTER EXCEPTION OCCURRED AND 'env->ExceptionClear()' IS NOT CALLED
     // see 
-    // https://developer.android.google.cn/training/articles/perf-jni#exceptions_1
+    // https://developer.androID.google.cn/training/articles/perf-jni#exceptions_1
     // or
-    // https://developer.android.com/training/articles/perf-jni#exceptions_1
+    // https://developer.androID.com/training/articles/perf-jni#exceptions_1
     // for more information
     // 
     // print exception:
