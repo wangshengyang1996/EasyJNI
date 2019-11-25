@@ -139,10 +139,13 @@ public class JNIUtil {
                 .append(" ")
                 .append(field.getName())
                 .append("Value = ")
+
+                .append(field.getType() == String.class ? "(jstring) " : "")
+
                 .append(isStatic ? "env->GetStatic" : "env->Get")
                 .append(field.getType().isPrimitive() ? upperFirst(field.getType().getName()) : "Object")
                 .append("Field(")
-                .append(field.getClass().getSimpleName())
+                .append(lowerFirst(field.getDeclaringClass().getSimpleName()))
                 .append(isStatic ? "Clazz," : "Obj,")
                 .append(field.getName())
                 .append("ID);");
